@@ -1,7 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var autoprefixer = require('autoprefixer');
 
 var ROOT_PATH = path.resolve(__dirname);
@@ -26,12 +25,8 @@ module.exports = {
       },
       {
         test: /\.scss/,
-        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
+        loaders: ["style", "css", "postcss", "sass"],
         exclude: /node_modules/
-      },
-      {
-        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-        loader: "url?limit=10000"
       }
     ]
   },
@@ -41,15 +36,7 @@ module.exports = {
       inject: 'body',
       filename: 'index.html'
     }),
-    new ExtractTextPlugin('style.css'),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        screw_ie8: true
-      }
-    }),
+    
   ],
   postcss: function () {
     return [autoprefixer];
