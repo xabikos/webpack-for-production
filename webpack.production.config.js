@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var autoprefixer = require('autoprefixer');
 
 var ROOT_PATH = path.resolve(__dirname);
@@ -25,7 +26,7 @@ module.exports = {
       },
       {
         test: /\.scss/,
-        loaders: ["style", "css", "postcss", "sass"],
+        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
         exclude: /node_modules/
       }
     ]
@@ -36,7 +37,7 @@ module.exports = {
       inject: 'body',
       filename: 'index.html'
     }),
-    
+    new ExtractTextPlugin('style.css')
   ],
   postcss: function () {
     return [autoprefixer];
