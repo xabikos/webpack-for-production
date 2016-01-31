@@ -50,7 +50,15 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin(
       'vendor',
       '[name]-[hash].min.js'
-    )
+    ),
+    new webpack.DefinePlugin({
+      // This affects react lib size
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin()
   ],
   postcss: function () {
     return [autoprefixer];
