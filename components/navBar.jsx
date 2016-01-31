@@ -14,7 +14,7 @@ class NavBar extends Component {
           <li className="nav-item active">
             <a
               className="nav-link"
-              href="https://github.com/xabikos/webpack-static-asset-management/tree/master/reactapp" target="_blank"
+              href="https://github.com/xabikos/webpack-for-production" target="_blank"
             >
               Github repo
             </a>
