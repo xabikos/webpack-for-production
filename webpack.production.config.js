@@ -31,6 +31,10 @@ module.exports = {
         test: /\.scss/,
         loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
         exclude: /node_modules/
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+        loader: "url?limit=10000"
       }
     ]
   },
