@@ -15,7 +15,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(ROOT_PATH, 'dist'),
-    filename: 'bundle.min.js'
+    filename: '[name]-[hash].min.js'
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -40,7 +40,7 @@ module.exports = {
       inject: 'body',
       filename: 'index.html'
     }),
-    new ExtractTextPlugin('style.min.css'),
+    new ExtractTextPlugin('[name]-[hash].min.css'),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
@@ -49,7 +49,7 @@ module.exports = {
     }),
     new webpack.optimize.CommonsChunkPlugin(
       'vendor',
-      '[name].min.js'
+      '[name]-[hash].min.js'
     )
   ],
   postcss: function () {
