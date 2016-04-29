@@ -1,6 +1,6 @@
 import React from 'react';
 
-import footerImage from '../images/footer.jpg';
+import footerImage from '../images/footer.png';
 
 const Footer = () => (
   <div id="footer">
